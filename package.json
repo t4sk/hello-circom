@@ -1,0 +1,15 @@
+{
+  "name": "hello-circom",
+  "version": "1.0.0",
+  "description": "[circom](https://github.com/iden3/circom)",
+  "license": "MIT",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "snarkjs": "^0.7.6"
+  }
+}

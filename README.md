@@ -1,0 +1,86 @@
+# Hello Circom
+
+## Setup
+
+```shell
+# Build circom
+git clone https://github.com/iden3/circom.git
+cargo build --release
+cargo install --path circom
+
+# Check circom installation
+circom --version
+
+# Install NPM packages
+npm i
+
+# Create folder to store circom artifacts
+mkdir build
+```
+
+## Concepts
+
+### Workflow
+
+```
+Write circuit -> generate R1CS + other files -> execute ciruit + generate witness -> trusted setup -> generate proof
+```
+
+### `Arithmetic circuit`
+
+Computation represented as a graph
+
+```
+(a * b) + c
+
+a ──┐
+    * ──> x ──┐
+b ──┘         + ──> out
+c ────────────┘
+```
+
+### `Witness`
+
+All values used in a single execution of a circuit (private inputs, public inputs and outputs, and all intermediate values).
+
+Example: prove `a * b = c` without revealing `a` and `b`
+
+```
+witness = [1, outputs, public inputs, private inputs, intermediates]
+        = [1, c, a, b]
+```
+
+### Generate a witness
+
+Execute a circuit with specific inputs and generate a `witness` (all values used in the execution).
+
+## Examples
+
+- Hello
+  - [code](./src/hello.circom)
+  - [notes](./notes/hello.md)
+
+- unconstraint circuit
+- Non quadratic constraint
+- Public inputs
+- arrays
+- signal vs variables
+- nullifier
+- merkle tree
+- hash func
+- bugs
+
+## TODO
+
+- trusted setup
+  - https://github.com/iden3/snarkjs
+- https://rareskills.io/post/underconstrained-circom
+
+## Links
+
+[circom](https://github.com/iden3/circom)
+[circomlib](https://github.com/iden3/circomlib)
+[snarkjs](https://github.com/iden3/snarkjs)
+[RareSkills](https://rareskills.io/post/circom-tutorial)
+[Introduction to ZK Circuits with Circom](https://hackmd.io/@Sahil4555/zk/%2FSC-lzeDEQA609ObFojGS5A)
+[zk repl](https://zkrepl.dev/)
