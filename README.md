@@ -23,7 +23,7 @@ mkdir build
 ### Workflow
 
 ```
-Write circuit -> generate R1CS + other files -> execute ciruit + generate witness -> trusted setup -> generate proof
+Write circuit -> generate R1CS + other files -> execute ciruit -> generate witness -> trusted setup -> generate proof
 ```
 
 ### `Arithmetic circuit`
@@ -78,9 +78,9 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
 
 ## Links
 
-[circom](https://github.com/iden3/circom)
-[circomlib](https://github.com/iden3/circomlib)
-[snarkjs](https://github.com/iden3/snarkjs)
-[RareSkills](https://rareskills.io/post/circom-tutorial)
-[Introduction to ZK Circuits with Circom](https://hackmd.io/@Sahil4555/zk/%2FSC-lzeDEQA609ObFojGS5A)
-[zk repl](https://zkrepl.dev/)
+- [circom](https://github.com/iden3/circom)
+- [circomlib](https://github.com/iden3/circomlib)
+- [snarkjs](https://github.com/iden3/snarkjs)
+- [RareSkills](https://rareskills.io/post/circom-tutorial)
+- [Introduction to ZK Circuits with Circom](https://hackmd.io/@Sahil4555/zk/%2FSC-lzeDEQA609ObFojGS5A)
+- [zk repl](https://zkrepl.dev/)
