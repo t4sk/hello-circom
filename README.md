@@ -64,12 +64,16 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
   - [code](./src/unconstraint.circom)
   - [notes](./notes/unconstraint-circuit.md)
 - Non quadratic constraint
-- Public inputs
-- arrays
-- signal vs variables
-- nullifier
+  - [code](./src/quad.circom)
+- Arrays
+  - [code](./src/arr.circom)
+- Template parameters
+  - [code](./src/temp.circom)
+- Public signals
+  - [code](./src/pub.circom)
+- Poseidon hash function
+  - [code](./src/hash.circom)
 - merkle tree
-- hash func
 - bugs
 
 ## TODO
