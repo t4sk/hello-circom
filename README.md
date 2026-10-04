@@ -60,8 +60,9 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
 - Hello
   - [code](./src/hello.circom)
   - [notes](./notes/hello.md)
-
-- unconstraint circuit
+- Unconstraint circuit
+  - [code](./src/unconstraint.circom)
+  - [notes](./notes/unconstraint-circuit.md)
 - Non quadratic constraint
 - Public inputs
 - arrays
@@ -75,7 +76,6 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
 
 - trusted setup
   - https://github.com/iden3/snarkjs
-- https://rareskills.io/post/underconstrained-circom
 
 ## Links
 
@@ -86,3 +86,4 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
 - [RareSkills - Hacking Underconstrained Circom Circuits With Fake Proofs](https://rareskills.io/post/underconstrained-circom)
 - [Introduction to ZK Circuits with Circom](https://hackmd.io/@Sahil4555/zk/%2FSC-lzeDEQA609ObFojGS5A)
 - [zk repl](https://zkrepl.dev/)
+- [Railgun circuit-v2](https://github.com/Railgun-Privacy/circuits-v2)
