@@ -3,7 +3,7 @@
 ## Setup
 
 ```shell
-# Build circom
+# Build and install circom
 git clone https://github.com/iden3/circom.git
 cargo build --release
 cargo install --path circom
@@ -23,7 +23,8 @@ mkdir build
 ### Workflow
 
 ```
-Write circuit -> generate R1CS + other files -> execute ciruit -> generate witness -> trusted setup -> generate proof
+              |        Compile               |    Witness generation               |      Proof generation
+Write circuit -> Generate R1CS + other files -> Execute ciruit -> Generate witness -> Trusted setup -> Generate proof
 ```
 
 ### `Arithmetic circuit`
@@ -31,7 +32,7 @@ Write circuit -> generate R1CS + other files -> execute ciruit -> generate witne
 Computation represented as a graph
 
 ```
-(a * b) + c
+out = (a * b) + c
 
 a ──┐
     * ──> x ──┐
@@ -82,5 +83,6 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
 - [circomlib](https://github.com/iden3/circomlib)
 - [snarkjs](https://github.com/iden3/snarkjs)
 - [RareSkills](https://rareskills.io/post/circom-tutorial)
+- [RareSkills - Hacking Underconstrained Circom Circuits With Fake Proofs](https://rareskills.io/post/underconstrained-circom)
 - [Introduction to ZK Circuits with Circom](https://hackmd.io/@Sahil4555/zk/%2FSC-lzeDEQA609ObFojGS5A)
 - [zk repl](https://zkrepl.dev/)
