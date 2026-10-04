@@ -67,11 +67,11 @@ The intended behavior of the code above is to
 
 ## Summary
 
-|           | Adds to R1CS | Adds to witness generator |
-| --------- | ------------ | ------------------------- |
-| `x <-- y` | nothing      | assignment                |
-| `x === y` | constraint   | assertion                 |
-| `x <== y` | constraint   | assignment + assertion    |
+|           | Adds to witness generator      | Adds to R1CS |
+| --------- | ------------------------------ | ------------ |
+| `x <-- y` | assignment (`y` to `x`)        | nothing      |
+| `x === y` | assertion (`x` must equal `y`) | constraint   |
+| `x <== y` | assignment + assertion         | constraint   |
 
 ## Bug
 
