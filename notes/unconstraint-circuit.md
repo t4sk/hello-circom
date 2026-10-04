@@ -1,4 +1,4 @@
-# Unconstraint circuit
+# Under-constrained circuit
 
 ```circom
 template Mul() {
@@ -12,11 +12,11 @@ template Mul() {
 }
 ```
 
-The code above
+The intended behavior of the code above is to
 
-1. Multiplies `a` and `b`
-2. Assigns the product to `out`.
-3. Checks that `out` equals to `c`
+1. Multiply `a` and `b`
+2. Assign the product to `out`
+3. Check that `out` equals `c`
 
 ## What is `x <-- y`?
 
@@ -26,7 +26,7 @@ The code above
 
 ### Execution (witness generation)
 
-- Assign the value of `y` to `x`
+- Assigns the value of `y` to `x`
 
 ### Proof generation
 
@@ -36,7 +36,7 @@ The code above
 
 ### Compilation
 
-- Adds assertion (checks `x` equals `y`) to witness generator
+- Adds assertion (checks `x` equals `y`) to the witness generator
 - Adds R1CS constraint (`x` must equal `y`)
 
 ### Execution (witness generation)
@@ -45,7 +45,7 @@ The code above
 
 ### Proof generation
 
-- Checks R1CS constraint that values provided for `x` and `y` are equal.
+- Checks that the provided values of `x` and `y` are equal.
 
 ## What is `x <== y`?
 
@@ -55,7 +55,7 @@ The code above
 
 - Adds assignment (`x <-- y`) to the witness generator
 - Adds assertion (`x === y`) to the witness generator
-- Adds constraint (`x === y`) to R1CS
+- Adds constraint (`x === y`) to the R1CS
 
 ### Execution (witness generation)
 
@@ -63,7 +63,15 @@ The code above
 
 ### Proof generation
 
-- Given a witness (a list of numbers, not necessarily from witness generation), proves that the witness satisfies the R1CS constraints
+- Given a witness (a list of numbers, not necessarily from witness generation), proves that the witness satisfies the R1CS constraints, including `x === y`.
+
+## Summary
+
+|           | Adds to R1CS | Adds to witness generator |
+| --------- | ------------ | ------------------------- |
+| `x <-- y` | nothing      | assignment                |
+| `x === y` | constraint   | assertion                 |
+| `x <== y` | constraint   | assignment + assertion    |
 
 ## Bug
 
@@ -74,9 +82,9 @@ out === c;
 
 Missing constraint on `out`.
 
-`out <-- a * b;` does not add any R1CS constraint, so the proof generator never checks that `out === a * b`
+`out <-- a * b;` does not add any R1CS constraint, so the proof generator never checks that `out === a * b`.
 
-The code that the proof generator sees roughly looks like
+The R1CS is equivalent to that of a circuit with only `out === c`:
 
 ```circom
 template Mul() {
@@ -89,15 +97,24 @@ template Mul() {
 }
 ```
 
-A prover can provide `a = 0`, `b = 0`, `c = 1`, `out = 1` as witness to generate a valid proof.
+`a` and `b` are completely unconstrained.
+
+A prover can provide `a = 0`, `b = 0`, `c = 1`, `out = 1` as the witness to generate a valid proof.
+
+Honest witness generation would compute `out = 0` for these inputs and fail the assertion `out === c` (0 ≠ 1), so this witness cannot come from executing the circuit.
+
+The prover skips witness generation and supplies their own numbers. Since the R1CS only checks `out === c`, the proof is valid.
+
+As a result, anyone can produce a valid proof that `a * b = c` for arbitrary `a`, `b`, `c`.
 
 ## Fix
 
-```circom
-# Remove
-out <-- a * b;
-out === c;
-
-# Add
-out <== a * b;
+```diff
+- out <-- a * b;
++ out <== a * b;
+  out === c;
 ```
+
+`<==` adds the constraint `out === a * b` to the R1CS.
+
+Together with `out === c`, the circuit now enforces `a * b === c`, and the witness `a = 0, b = 0, c = 1, out = 1` is rejected.
