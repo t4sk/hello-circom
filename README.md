@@ -80,12 +80,6 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
 - Merkle tree
   - [code](./src/merkle.circom)
 
-## TODO
-
-- bugs
-- trusted setup
-  - https://github.com/iden3/snarkjs
-
 ## Links
 
 - [circom](https://github.com/iden3/circom)
