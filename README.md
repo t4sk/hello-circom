@@ -71,13 +71,18 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
   - [code](./src/temp.circom)
 - Public signals
   - [code](./src/pub.circom)
+- Swap order of inputs (a, b) -> (b, a)
+  - [code](./src/swap.circom)
+- Number to bits
+  - [code](./src/num2bits.circom)
 - Poseidon hash function
   - [code](./src/hash.circom)
-- merkle tree
-- bugs
+- Merkle tree
+  - [code](./src/merkle.circom)
 
 ## TODO
 
+- bugs
 - trusted setup
   - https://github.com/iden3/snarkjs
 
@@ -91,3 +96,4 @@ Execute a circuit with specific inputs and generate a `witness` (all values used
 - [Introduction to ZK Circuits with Circom](https://hackmd.io/@Sahil4555/zk/%2FSC-lzeDEQA609ObFojGS5A)
 - [zk repl](https://zkrepl.dev/)
 - [Railgun circuit-v2](https://github.com/Railgun-Privacy/circuits-v2)
+- [Tornado cash circuits](https://github.com/tornadocash/tornado-core/tree/master/circuits)

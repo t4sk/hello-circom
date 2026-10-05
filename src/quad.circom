@@ -7,9 +7,11 @@ template Mul() {
     signal output d;
 
     // Non quadratic constraint
-    // At most 1 multiplication per constraint
-    // This will not compile
+    // At most 1 multiplication of 2 signals per constraint
+    // This will not compile (3 signals multiplied)
     // d <== a * b * c;
+    // This will compile (1 constant and 2 signals multiplied)
+    // d <== 2 * b * c;
 
     signal ab;
     ab <== a * b;
